@@ -1,0 +1,9 @@
+{
+  "seed": 11,
+  "seconds": 97.27921830001287,
+  "fit_retrains": 128,
+  "audit_retrains": 49,
+  "distinct_final_masks": 26,
+  "initialization_unchanged": true,
+  "structural_check": true
+}

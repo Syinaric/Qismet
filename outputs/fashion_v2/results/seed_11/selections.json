@@ -1,0 +1,66 @@
+{
+  "4": {
+    "Dense": [
+      255
+    ],
+    "Random (10-mask mean)": [
+      225,
+      86,
+      15,
+      27,
+      102,
+      75,
+      57,
+      106,
+      201,
+      101
+    ],
+    "Magnitude": [
+      232
+    ],
+    "Exact linear": [
+      120
+    ],
+    "Exact QUBO": [
+      60
+    ],
+    "QAOA": [
+      57
+    ],
+    "Best of 32 random": [
+      212
+    ]
+  },
+  "2": {
+    "Dense": [
+      255
+    ],
+    "Random (10-mask mean)": [
+      18,
+      129,
+      160,
+      96,
+      20,
+      20,
+      34,
+      12,
+      65,
+      34
+    ],
+    "Magnitude": [
+      136
+    ],
+    "Exact linear": [
+      48
+    ],
+    "Exact QUBO": [
+      24
+    ],
+    "QAOA": [
+      12
+    ],
+    "Best of 32 random": [
+      12
+    ]
+  }
+}

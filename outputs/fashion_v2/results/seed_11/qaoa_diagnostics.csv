@@ -1,0 +1,3 @@
+seed,keep_groups,pruning,qaoa_mask,exact_mask,hit_exact,surrogate_gap,qaoa_feasible_probability,feasible_shots,top_decile_conditional,uniform_top_decile,evaluations,ising_max_error,all_optimizer_starts_hit_budget
+11,4,50.0,10011100,00111100,False,0.00023759389459787617,0.6817973624289918,24,0.10014155158760359,0.1,360,1.4210854715202004e-14,True
+11,2,75.0,00110000,00011000,False,0.0023754862559496326,0.518656285946146,16,0.10783128737447255,0.10714285714285714,360,5.684341886080802e-14,True

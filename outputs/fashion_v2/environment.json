@@ -1,0 +1,15 @@
+{
+  "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]",
+  "packages": {
+    "torch": "2.15.0+cpu",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "pandas": "3.1.1",
+    "qiskit": "2.6.1",
+    "matplotlib": "3.11.2",
+    "nbclient": "0.11.0",
+    "nbformat": "5.11.1",
+    "nbconvert": "7.17.2"
+  }
+}

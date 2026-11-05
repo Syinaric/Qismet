@@ -1,0 +1,37 @@
+{
+  "dataset_seed": 2026,
+  "train_size": 5000,
+  "validation_size": 1000,
+  "test_size": 10000,
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "hidden": 16,
+  "groups": 8,
+  "group_size": 2,
+  "keep_groups": [
+    4,
+    2
+  ],
+  "epochs": 20,
+  "batch_size": 256,
+  "lr": 0.003,
+  "fit_masks": 128,
+  "audit_masks": 49,
+  "shots": 32,
+  "qaoa_reps": 2,
+  "qaoa_restarts": 3,
+  "qaoa_maxiter": 120,
+  "random_masks": 10,
+  "ridge_alphas": [
+    0.0001,
+    0.01,
+    0.1,
+    1.0,
+    10.0
+  ]
+}
