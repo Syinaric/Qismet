@@ -1,0 +1,31 @@
+seed,pruning,method,seconds,timing_source
+11,50.0,Exact QUBO enumeration,4.54622000688687e-05,"new CPU microbenchmark, median 5x1000 solves"
+11,50.0,Best of 32 random by QUBO,3.4169699996709825e-05,"new CPU microbenchmark, median 5x1000 solves"
+11,50.0,QAOA statevector simulation,2.0689506999915466,recorded original solver wall time
+11,75.0,Exact QUBO enumeration,3.8483999902382495e-05,"new CPU microbenchmark, median 5x1000 solves"
+11,75.0,Best of 32 random by QUBO,3.390369995031506e-05,"new CPU microbenchmark, median 5x1000 solves"
+11,75.0,QAOA statevector simulation,1.967112399986945,recorded original solver wall time
+22,50.0,Exact QUBO enumeration,4.5994000043720006e-05,"new CPU microbenchmark, median 5x1000 solves"
+22,50.0,Best of 32 random by QUBO,3.429939993657172e-05,"new CPU microbenchmark, median 5x1000 solves"
+22,50.0,QAOA statevector simulation,1.9813844999298453,recorded original solver wall time
+22,75.0,Exact QUBO enumeration,3.7269799970090386e-05,"new CPU microbenchmark, median 5x1000 solves"
+22,75.0,Best of 32 random by QUBO,3.3807600033469495e-05,"new CPU microbenchmark, median 5x1000 solves"
+22,75.0,QAOA statevector simulation,1.995121799991466,recorded original solver wall time
+33,50.0,Exact QUBO enumeration,4.5441900030709806e-05,"new CPU microbenchmark, median 5x1000 solves"
+33,50.0,Best of 32 random by QUBO,3.415969992056489e-05,"new CPU microbenchmark, median 5x1000 solves"
+33,50.0,QAOA statevector simulation,1.9614184000529349,recorded original solver wall time
+33,75.0,Exact QUBO enumeration,3.757600008975714e-05,"new CPU microbenchmark, median 5x1000 solves"
+33,75.0,Best of 32 random by QUBO,3.371499991044402e-05,"new CPU microbenchmark, median 5x1000 solves"
+33,75.0,QAOA statevector simulation,1.9677792000584304,recorded original solver wall time
+44,50.0,Exact QUBO enumeration,4.505820001941174e-05,"new CPU microbenchmark, median 5x1000 solves"
+44,50.0,Best of 32 random by QUBO,3.3799199969507756e-05,"new CPU microbenchmark, median 5x1000 solves"
+44,50.0,QAOA statevector simulation,2.0922370000043884,recorded original solver wall time
+44,75.0,Exact QUBO enumeration,3.7063600029796365e-05,"new CPU microbenchmark, median 5x1000 solves"
+44,75.0,Best of 32 random by QUBO,3.3550700056366625e-05,"new CPU microbenchmark, median 5x1000 solves"
+44,75.0,QAOA statevector simulation,1.971508799935691,recorded original solver wall time
+55,50.0,Exact QUBO enumeration,4.6233600005507466e-05,"new CPU microbenchmark, median 5x1000 solves"
+55,50.0,Best of 32 random by QUBO,3.368410002440214e-05,"new CPU microbenchmark, median 5x1000 solves"
+55,50.0,QAOA statevector simulation,1.992235800018534,recorded original solver wall time
+55,75.0,Exact QUBO enumeration,3.782099997624755e-05,"new CPU microbenchmark, median 5x1000 solves"
+55,75.0,Best of 32 random by QUBO,3.476109995972365e-05,"new CPU microbenchmark, median 5x1000 solves"
+55,75.0,QAOA statevector simulation,2.027647600043565,recorded original solver wall time

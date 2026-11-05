@@ -1,0 +1,3 @@
+pruning,exact_hits,trials,mean_surrogate_gap,mean_feasible_probability,mean_top_decile_conditional,uniform_top_decile,mean_feasible_shots
+50.0,1,5,0.011747374997441707,0.7675746368548387,0.10007600500457792,0.1,24.8
+75.0,2,5,0.009390297448166418,0.5298825198287743,0.10788780020256887,0.10714285714285714,17.8
