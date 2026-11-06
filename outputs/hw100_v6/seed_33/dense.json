@@ -1,0 +1,7 @@
+{
+  "training_seconds": 0.36470925001776777,
+  "val_loss": 0.5623567700386047,
+  "val_accuracy": 0.8320000171661377,
+  "test_accuracy": 0.8240000009536743,
+  "parameters": 318010
+}

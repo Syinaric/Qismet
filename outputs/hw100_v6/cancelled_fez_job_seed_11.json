@@ -1,0 +1,12 @@
+{
+  "seed": 11,
+  "backend": "ibm_fez",
+  "compile_seconds": 0.8992391249921639,
+  "depth": 142,
+  "two_qubit_gates": 200,
+  "swaps": 0,
+  "shots": 4096,
+  "job_id": "dbmm2vd8ft8s738v4n60",
+  "submitted_utc": "2026-11-06T05:11:26.031918+00:00",
+  "state": "submitted"
+}

@@ -1,0 +1,23 @@
+{
+  "rule": "QAOA beats a method if its best-of-10 validation loss is lower in at least 2 of 3 seeds AND its mean best-of-10 validation loss over the 3 seeds is lower",
+  "against": {
+    "Random sampling": {
+      "seed_wins": 2,
+      "qaoa_mean": 0.5014476180076599,
+      "other_mean": 0.5085427363713583,
+      "qaoa_wins": true
+    },
+    "Simulated annealing (matched)": {
+      "seed_wins": 1,
+      "qaoa_mean": 0.5014476180076599,
+      "other_mean": 0.5013646384080251,
+      "qaoa_wins": false
+    },
+    "Simulated annealing (long)": {
+      "seed_wins": 0,
+      "qaoa_mean": 0.5014476180076599,
+      "other_mean": 0.49758584300676983,
+      "qaoa_wins": false
+    }
+  }
+}

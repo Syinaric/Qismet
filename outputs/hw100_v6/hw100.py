@@ -423,8 +423,8 @@ def stage_hardware():
         if path.exists() and load(path).get('state') == 'complete':
             print('seed', seed, 'hardware done'); continue
         if path.exists() and load(path).get('job_id'):
-            raise SystemExit(f"seed {seed}: job {load(path)['job_id']} was submitted but not collected; "
-                             "collect it (do not resubmit) before continuing")
+            collect(service, seed, path)
+            continue
         q, _ = seed_model(seed)
         s = q['angles']['scaled_by']
         h = np.asarray(q['ising']['h']) / s
@@ -447,8 +447,40 @@ def stage_hardware():
         rec.update(job_id=job.job_id(), submitted_utc=datetime.now(timezone.utc).isoformat(), state='submitted')
         save(path, rec)
         print(f'seed {seed}: job {rec["job_id"]} ({rec["two_qubit_gates"]} two-qubit gates, depth {rec["depth"]}, swaps {rec["swaps"]})', flush=True)
-        result = job.result()
-        rec['submit_to_result_seconds'] = time.perf_counter() - t
+        collect(service, seed, path)
+
+
+def wait_for(job):
+    """Poll a job, riding out network drops; return its result."""
+    while True:
+        try:
+            status = job.status()
+            status = getattr(status, 'name', status)
+            if status in ('DONE', 'ERROR', 'CANCELLED'):
+                break
+        except Exception as e:
+            print('  (network problem while polling, retrying:', type(e).__name__, ')', flush=True)
+        time.sleep(20)
+    if status != 'DONE':
+        raise SystemExit(f'job {job.job_id()} ended with status {status}')
+    for attempt in range(30):
+        try:
+            return job.result()
+        except Exception as e:
+            print('  (network problem fetching result, retrying:', type(e).__name__, ')', flush=True)
+            time.sleep(20)
+    raise SystemExit('could not fetch result')
+
+
+def collect(service, seed, path):
+    rec = load(path)
+    folder = path.parent
+    job = service.job(rec['job_id'])
+    print(f"seed {seed}: waiting for job {rec['job_id']}", flush=True)
+    result = wait_for(job)
+    submitted = datetime.fromisoformat(rec['submitted_utc'])
+    rec['submit_to_result_seconds'] = (datetime.now(timezone.utc) - submitted).total_seconds()
+    if True:
         bits = result[0].data.meas.get_bitstrings()
         X = np.array([[int(b[-1 - i]) for i in range(NQ)] for b in bits], dtype=np.int8)  # qubit i = clbit i
         np.save(folder / 'hardware_shots.npy', X)
@@ -550,7 +582,7 @@ def stage_evaluate(workers=6):
 # ---------------------------------------------------------------- report
 def stage_report():
     names = list(PROTOCOL['methods'])
-    ev = pd.concat([pd.read_csv(HERE / f'seed_{s}' / 'evaluation.csv') for s in SEEDS])
+    ev = pd.concat([pd.read_csv(HERE / f'seed_{s}' / 'evaluation.csv') for s in SEEDS], ignore_index=True)
     best = ev.loc[ev.groupby(['seed', 'method']).val_loss.idxmin()].set_index(['seed', 'method'])
     mean10 = ev.groupby(['seed', 'method']).val_loss.mean()
     lines = ['# Pre-registered 100-qubit result', '']

@@ -1,0 +1,34 @@
+{
+  "seed": 33,
+  "backend": "ibm_fez",
+  "compile_seconds": 0.017626665998250246,
+  "depth": 139,
+  "two_qubit_gates": 200,
+  "swaps": 0,
+  "shots": 4096,
+  "job_id": "dbmvnot8ft8s738vkd50",
+  "submitted_utc": "2026-11-06T16:10:11.737991+00:00",
+  "state": "complete",
+  "submit_to_result_seconds": 2287.958577,
+  "usage": {
+    "qpu_charge_time_seconds": 3,
+    "value": 0.046272,
+    "unit": "resource_units",
+    "status": "complete",
+    "details": [
+      {
+        "value": 0.046272,
+        "unit": "resource_units",
+        "metric": {
+          "id": "caffe3ca-729c-5750-8777-df63bbf8bfd9",
+          "value": 3
+        }
+      }
+    ]
+  },
+  "timestamps": {
+    "created": "2026-11-06T16:10:11.503666Z",
+    "finished": "2026-11-06T16:31:29.687313Z",
+    "running": "2026-11-06T16:30:01.107895Z"
+  }
+}

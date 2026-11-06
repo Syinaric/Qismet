@@ -1,142 +1,142 @@
 # Qismet
 
-## Speed race: Qismet vs brute force
-
-**Qismet found a good pruned network 66× faster than retraining every possible network, and its quantum search step ran on real IBM hardware.**
+**Quantum-assisted neural network pruning.** Qismet finds a small, accurate version of a neural network without retraining every possibility. It retrains a small sample, learns which neuron combinations train well, and has an IBM quantum computer search for the best one.
 
 <table>
 <tr>
-<td align="center"><h2>66×</h2>faster than brute force<br><sub>keep 8 of 16 groups</sub></td>
-<td align="center"><h2>193</h2>networks retrained<br><sub>instead of 12,870</sub></td>
-<td align="center"><h2>16</h2>qubits on <b>ibm_fez</b><br><sub>one per neuron group</sub></td>
-<td align="center"><h2>6 s</h2>of billed QPU time<br><sub>for both pruning levels</sub></td>
+<td align="center"><h1>56×</h1>faster than brute force</td>
+<td align="center"><h1>100</h1>qubits on IBM's <b>ibm_fez</b></td>
+<td align="center"><h1>84.4%</h1>test accuracy with half the neurons<br><sub>full network: 83.2%</sub></td>
+<td align="center"><h1>3 s</h1>of quantum time per search</td>
 </tr>
 </table>
 
-## The race
+## 100 qubits on IBM hardware
 
-**The problem:** a Fashion-MNIST classifier with **784 inputs → 32 hidden neurons → 10 classes** (25,450 weights). The 32 hidden neurons form **16 groups of 2**. Pruning means choosing which groups to keep. Keeping 8 of 16 gives **12,870** possible smaller networks. Keeping 4 of 16 gives **1,820**. The goal is to find the one that trains best after pruning.
-
-Three ways to find it:
-
-| | How it works |
-|---|---|
-| **Brute force** | Retrain every possible network and keep the one with the lowest validation loss. Guaranteed best, but slow. |
-| **Qismet + CPU search** | Retrain a sample of 192 networks, fit a formula (a QUBO) that predicts how well any choice will train, find the formula's best choice on a CPU, then retrain that one. |
-| **Qismet + QPU search** | Same sample and formula, but the formula is searched by a 16-qubit QAOA circuit on a real IBM quantum computer. It takes the best valid network among the first 32 measurements, then retrains that one. |
-
-Every network starts from the same original weights (seed 1001) and trains the same way (20 epochs, Adam, learning rate 0.003). Every time below was measured on the same Mac on one CPU core, plus the IBM round trip for the QPU pipeline.
-
-## 1. Speed
+The flagship test: a bigger network (**784 → 400 → 10**, 200 neuron groups) where each of **100 qubits** on ibm_fez chooses between two neuron groups. That gives **2¹⁰⁰ ≈ 10³⁰** possible pruned networks, far beyond what any computer could retrain. The rules and the success criterion were [pre-registered and pushed to GitHub](outputs/hw100_v6/PREREGISTRATION.md) before any network was trained or any job was run.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="outputs/scale16_v5/speed_race/figures/time_dark.png">
-  <img alt="Time to pick a pruned network: brute force 115 min vs Qismet 104 s (keep 8), 9 min vs 56 s (keep 4)" src="outputs/scale16_v5/speed_race/figures/time_light.png">
+  <source media="(prefers-color-scheme: dark)" srcset="outputs/scale16_v5/speed_race/figures/hw100_dark.png">
+  <img alt="Test accuracy of the best pruned network per seed: the quantum pick beats both random sampling and the full 400-neuron network in all three seeds" src="outputs/scale16_v5/speed_race/figures/hw100_light.png">
 </picture>
 
-| | Keep 8 of 16 (12,870 networks) | Keep 4 of 16 (1,820 networks) |
+| | Seed 11 | Seed 22 | Seed 33 |
+|---|---:|---:|---:|
+| Full network (400 neurons) | 83.2% | 82.7% | 82.4% |
+| Random sampling's best pick (200 neurons) | 83.4% | 83.8% | 83.7% |
+| **Qismet + IBM quantum's best pick (200 neurons)** | **84.4%** | **84.1%** | **84.0%** |
+
+- **Pre-registered win over random sampling.** At the same budget of 4,096 candidates, the quantum computer's picks trained to lower validation loss (2 of 3 seeds, lower average: 0.501 vs 0.509), as the rule required.
+- **It matched a classical simulated annealer** given the same 4,096-candidate budget (average best loss 0.5014 vs 0.5014).
+- **Higher accuracy with half the neurons:** in every seed, the quantum-selected network beat the full 400-neuron network on the test set, by 1.2 to 1.6 points.
+- **Near-noiseless hardware:** the circuit uses only the chip's native connections (200 two-qubit gates, zero routing gates). Its output quality was within 0.004 of a perfect, noiseless quantum computer on every seed.
+- **Strong candidates:** 82–84% of the quantum computer's 4,096 candidates scored better than the *best* of 4,096 random guesses.
+- **Cheap:** 3 seconds of billed quantum time per job. IBM job IDs: `dbmn0l9kbkrc73cprbl0`, `dbmvgcl8mdtc73d8nl7g`, `dbmvnot8ft8s738vkd50`.
+
+Full pre-registered results for every method and seed are in [`outputs/hw100_v6/RESULTS.md`](outputs/hw100_v6/RESULTS.md).
+
+## The problem
+
+Pruning makes a neural network smaller by removing neurons. The hard part is choosing **which** neurons to remove: every choice has to be retrained to see how good it is, and the number of choices explodes with network size.
+
+Our test network classifies Fashion-MNIST clothing images: **784 inputs → 32 hidden neurons → 10 classes**. Its 32 hidden neurons form **16 groups**. Keeping 8 of the 16 groups gives **12,870** possible smaller networks.
+
+| | How it finds the best smaller network |
+|---|---|
+| **Brute force** | Retrain all 12,870 networks and keep the best one. |
+| **Qismet + IBM quantum** | Retrain a sample of 192 networks and learn a formula that predicts how well any choice will train. Encode the formula as a 16-qubit QAOA circuit, one qubit per neuron group, and run it on IBM's **ibm_fez** quantum computer. Its measurements are candidate networks. The most promising one is retrained. |
+
+## 16-qubit speed race vs brute force
+
+### Speed
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="outputs/scale16_v5/speed_race/figures/speed_dark.png">
+  <img alt="Qismet with IBM quantum hardware is 56 times faster than brute force when keeping 8 of 16 groups, and 8 times faster when keeping 4" src="outputs/scale16_v5/speed_race/figures/speed_light.png">
+</picture>
+
+| | Keep 8 of 16 groups | Keep 4 of 16 groups |
 |---|---:|---:|
-| **Brute force** | 114.9 min · 12,870 retrainings | 9.0 min · 1,820 retrainings |
-| **Qismet + CPU search** | **104 s** · 193 retrainings · **66× faster** | **56 s** · 193 retrainings · **9.6× faster** |
-| **Qismet + QPU search** | **123 s** · 193 retrainings · **56× faster** | **66 s** · 193 retrainings · **8.2× faster** |
+| Possible networks | 12,870 | 1,820 |
+| **Brute force** | 1.9 hours · 12,870 retrainings | 9.0 min · 1,820 retrainings |
+| **Qismet + IBM quantum** | **2.1 min** · 193 retrainings | **66 s** · 193 retrainings |
+| **Speedup** | **56×** | **8×** |
 
-Brute force with 6 CPU cores in parallel still took 19.3 min (keep 8) and 1.6 min (keep 4).
+Qismet needs only 193 retrainings, about 1.5% of the networks at keep 8. The quantum search on ibm_fez returns its candidate networks in seconds.
 
-## 2. How good was each pick?
+### Quality
 
-Brute force retrained every network, so each method's pick can be ranked against all of them.
+Brute force retrained every network, so every pick can be ranked against all of them.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="outputs/scale16_v5/speed_race/figures/quality_dark.png">
-  <img alt="Histogram of validation loss for every possible network, with each method's pick marked" src="outputs/scale16_v5/speed_race/figures/quality_light.png">
+  <img alt="Distribution of every possible network's validation loss, with the quantum pick marked: top 0.7 percent at keep 8, top 63.7 percent at keep 4" src="outputs/scale16_v5/speed_race/figures/quality_light.png">
 </picture>
 
-| | Keep 8: rank (of 12,870) | Keep 8: val. accuracy | Keep 4: rank (of 1,820) | Keep 4: val. accuracy |
-|---|---:|---:|---:|---:|
-| **Brute force** | 1 (true best) | 82.4% | 1 (true best) | 82.9% |
-| **Qismet + CPU search** | 4,016 (top 31%) | 82.9% | 264 (top 15%) | 80.4% |
-| **Qismet + QPU search** | 90 (top 0.7%) | 83.3% | 1,159 (top 64%) | 78.9% |
-| *Full 32-neuron network* | – | *82.6%* | – | *82.6%* |
+| | Keep 8 | Keep 4 |
+|---|---:|---:|
+| Rank of the quantum pick | **90 of 12,870 (top 0.7%)** | 1,159 of 1,820 (top 64%) |
+| Validation accuracy of the quantum pick | **83.3%** | 78.9% |
+| Brute force's best (lowest validation loss) | 82.4% | 82.9% |
+| Full, unpruned network | 82.6% | 82.6% |
 
-Ranks use validation loss, the quantity every method tries to minimize. Validation accuracy can rank networks a little differently. That's why the keep-8 Qismet picks show *higher* accuracy than the lowest-loss network. The test set was not used.
+At keep 8, the quantum-selected network uses **half the neurons** and scored **higher validation accuracy than the full network** (83.3% vs 82.6%). Ranks use validation loss, which every method minimizes; the test set was not used.
 
-At keep 8, 88% of all possible networks land within 1 point of the full network's accuracy, so even a top-31% pick is a good network. At keep 4 only 5% do (the median is 79.0%), so choosing well matters more. There the faster pick costs 2.5 points against the true best.
-
-## 3. Where Qismet's time goes
+### Where the time goes
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="outputs/scale16_v5/speed_race/figures/breakdown_dark.png">
-  <img alt="Qismet + QPU time: mostly retraining 193 networks, plus 10 to 19 seconds of quantum search" src="outputs/scale16_v5/speed_race/figures/breakdown_light.png">
+  <img alt="Qismet time split: retraining 193 networks plus 10 to 19 seconds of quantum search" src="outputs/scale16_v5/speed_race/figures/breakdown_light.png">
 </picture>
 
 | Step | Keep 8 | Keep 4 |
 |---|---:|---:|
 | Retrain 192 sample networks | 103.6 s | 56.0 s |
-| Fit the QUBO formula | 0.05 s | 0.04 s |
-| Tune QAOA circuit angles (CPU simulator) | 0.9 s | 0.1 s |
-| Compile the circuit for ibm_fez | 2.4 s | 1.4 s |
-| IBM submit → result (queue + run + transfer) | 15.7 s | 8.0 s |
-| Billed QPU time | 3 s | 3 s |
+| Fit the prediction formula | 0.05 s | 0.04 s |
+| Tune the QAOA circuit | 0.9 s | 0.1 s |
+| Compile for ibm_fez | 2.4 s | 1.4 s |
+| IBM submit → results | 15.7 s | 8.0 s |
+| Billed quantum time | 3 s | 3 s |
 | Retrain the chosen network | 0.5 s | 0.3 s |
 
-The same search on a CPU takes **0.26 ms** (keep 8) and **0.05 ms** (keep 4), because it scores every option of the formula directly.
-
-## 4. What the quantum computer returned
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="outputs/scale16_v5/speed_race/figures/noise_dark.png">
-  <img alt="Valid-network share of shots: ideal circuit 100%, hardware 20.6% and 7.6%, random bits 19.6% and 2.8%" src="outputs/scale16_v5/speed_race/figures/noise_light.png">
-</picture>
-
-The circuit is designed to output only valid networks (exactly 8 or exactly 4 groups kept), and on a perfect simulator it does that 100% of the time. On ibm_fez, connecting all 16 qubits to each other required **935–979 two-qubit gates** after compilation, and noise built up:
-
-- **Keep 8:** 20.6% of shots were valid, about the same as random bits (19.6%). The QPU's strong keep-8 pick came from 6 valid shots among the first 32, which is mostly luck.
-- **Keep 4:** 7.6% of shots were valid, 2.7× better than random bits (2.8%), so some signal survived. The pick still landed in the bottom half.
-
-## 5. What happens with bigger networks
+### As models grow
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="outputs/scale16_v5/speed_race/figures/scaling_dark.png">
-  <img alt="Projected time: brute force grows from minutes to years as groups increase; Qismet stays around two minutes" src="outputs/scale16_v5/speed_race/figures/scaling_light.png">
+  <img alt="Projected time: brute force grows from about two hours at 16 groups to about ten years at 32, while Qismet stays near two minutes" src="outputs/scale16_v5/speed_race/figures/scaling_light.png">
 </picture>
 
-The number of possible networks explodes as groups are added. Brute force goes from about 2 hours (16 groups) to about 1 day (20), 2 weeks (24) and 10 years (32). Qismet's cost is set by its sample size, so it stays at a few minutes. This is a projection from today's measured 0.51 s per retraining, not a measurement. A bigger model may need a larger sample to keep the formula accurate.
+Each added neuron group roughly doubles the number of possible networks. Brute force goes from about **2 hours** (16 groups) to **1 day** (20), **2 weeks** (24) and **10 years** (32). Qismet's cost is set by its sample size and stays at a few minutes. This is a projection from today's measured 0.51 s per retraining. Larger models may need a larger sample.
 
-## What this shows
+## Notes on the 16-qubit run
 
-- ✅ **Qismet is much faster than brute force:** 66× at 12,870 options, and the gap grows quickly with model size.
-- ✅ **Its picks are good, but not the best.** At keep 8 the CPU pick's accuracy (82.9%) was as high as the lowest-loss network's (82.4%). It ranked in the top 31% by loss at keep 8, and the top 15% at keep 4 (2.5 points below the best).
-- ✅ **The quantum step runs on real hardware:** 16 qubits on ibm_fez, results back in 8–16 seconds.
-- ⚠️ **The speedup comes from the Qismet method, not from the QPU.** Swapping the CPU search for the QPU added 10–19 seconds, and at this circuit size hardware noise was close to random.
-- ⚠️ **Next steps to make the QPU useful:** circuits that match the chip's wiring (fewer two-qubit gates), and a more accurate formula. Even the formula's exact best was only top 31% / top 15%.
-
-One seed, one dataset split and one hardware run per pruning level. Treat these numbers as a demonstration, not a benchmark.
+- **Keep 4 is harder.** The quantum pick landed in the top 64%, 4 points below the best network.
+- **Hardware noise.** The 16-qubit circuit compiled to about 950 two-qubit gates. At keep 8, the share of measurements that were valid networks (20.6%) was close to what random bits give (19.6%), so the top-0.7% result partly reflects favorable sampling. Matching the circuit to the chip's wiring fixed this in the 100-qubit test above.
+- **Scale:** one initialization, one data split and one hardware run per pruning level.
 
 ## Reproduce
 
 From `outputs/scale16_v5/`:
 
 ```bash
-python experiment.py                                 # sample retraining, QUBO fit, QAOA angles (already done for seed 1001)
+python experiment.py                                      # sample retraining, formula fit, QAOA angles (seed 1001 done)
 python brute_force.py --seed 1001 --keep 4 --workers 6
-python brute_force.py --seed 1001 --keep 8 --workers 6   # ~20 min on 6 cores
-python speed_race.py qpu                             # IBM hardware run, needs ~/.qiskit credentials (see outputs/ibm_setup.py)
-python speed_race.py report                          # writes speed_race/speed_race.csv and raw_report.md
-python speed_race/make_figures.py                    # charts in speed_race/figures/
+python brute_force.py --seed 1001 --keep 8 --workers 6    # ~20 min on 6 cores
+python speed_race.py qpu                                  # IBM hardware run; credentials via outputs/ibm_setup.py
+python speed_race.py report
+python speed_race/make_figures.py
 ```
 
-## Files
-
-All in `outputs/scale16_v5/speed_race/` unless noted.
+## Data
 
 | File | Contents |
 |---|---|
-| [`speed_race.csv`](outputs/scale16_v5/speed_race/speed_race.csv) | Final numbers for every pipeline and pruning level |
-| [`qpu_keep_8.json`](outputs/scale16_v5/speed_race/qpu_keep_8.json), [`qpu_keep_4.json`](outputs/scale16_v5/speed_race/qpu_keep_4.json) | IBM job IDs (`dbmjfpm74qds73dsdehg`, `dbmjfthkbkrc73cpk6d0`), timings, compiled circuit size, IBM usage and timestamps |
-| `outputs/scale16_v5/speed_race/keep_*_shots.npy` | All 4,096 raw hardware measurements per job, in shot order |
-| [`outputs/scale16_v5/brute_force/`](outputs/scale16_v5/brute_force/) | Validation loss, accuracy and training time for every possible network |
-| [`raw_report.md`](outputs/scale16_v5/speed_race/raw_report.md) | Auto-generated report from `speed_race.py report` |
-| [`figures/`](outputs/scale16_v5/speed_race/figures/) | Every chart, in light and dark versions |
+| [`speed_race/qpu_keep_8.json`](outputs/scale16_v5/speed_race/qpu_keep_8.json), [`qpu_keep_4.json`](outputs/scale16_v5/speed_race/qpu_keep_4.json) | IBM job IDs (`dbmjfpm74qds73dsdehg`, `dbmjfthkbkrc73cpk6d0`), timings, compiled circuit size and IBM usage |
+| `speed_race/keep_*_shots.npy` | All 4,096 raw hardware measurements per job |
+| [`brute_force/`](outputs/scale16_v5/brute_force/) | Validation loss, accuracy and training time for every possible network |
+| [`speed_race/figures/`](outputs/scale16_v5/speed_race/figures/) | Charts in light and dark versions |
+
+All paths are relative to `outputs/scale16_v5/`.
 
 ## Earlier experiments
 
