@@ -151,7 +151,9 @@ class HardwareRunner:
     def __init__(self, service, backend, ledger_path, *, allowance_seconds=600,
                  reserve_seconds=120, max_job_seconds=60, max_jobs=8,
                  max_shots=4096, seed_transpiler=2026, sampler_factory=None,
-                 verified_open=True):
+                 verified_open=True, logical_qubits=8):
+        if logical_qubits not in (8,16):
+            raise ValueError('Supported logical mask widths are 8 and 16.')
         if allowance_seconds > 600 or allowance_seconds <= 0:
             raise ValueError('The authorized hardware allowance is at most 600 seconds.')
         if reserve_seconds < 120 or reserve_seconds >= allowance_seconds:
@@ -164,6 +166,10 @@ class HardwareRunner:
         self.ledger_path = Path(ledger_path).resolve()
         self.settings = dict(allowance_seconds=float(allowance_seconds), reserve_seconds=float(reserve_seconds),
             max_job_seconds=int(max_job_seconds), max_jobs=int(max_jobs), max_shots=int(max_shots))
+        # Preserve existing eight-bit ledgers exactly; pin width in new 16-bit ledgers.
+        if logical_qubits!=8: self.settings['logical_qubits']=logical_qubits
+        if backend.num_qubits<logical_qubits:
+            raise ValueError('Backend has too few qubits for this mask width.')
         self.seed_transpiler = int(seed_transpiler)
         self.sampler_factory = sampler_factory
         self._jobs = {}
@@ -225,14 +231,15 @@ class HardwareRunner:
     def _prepare(self, circuit, shots, folder):
         from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister, qpy
         from qiskit.transpiler import generate_preset_pass_manager
-        if circuit.num_qubits != 8 or circuit.num_parameters:
-            raise ValueError('Pass a fully bound eight-logical-qubit circuit.')
+        n=self.settings.get('logical_qubits',8)
+        if circuit.num_qubits != n or circuit.num_parameters:
+            raise ValueError(f'Pass a fully bound {n}-logical-qubit circuit.')
         if circuit.num_clbits or any(x.operation.name in ('measure','reset') for x in circuit.data):
             raise ValueError('Pass a unitary circuit without classical bits, measurements or reset; adapter adds the mask register.')
-        qreg, creg = QuantumRegister(8,'q'), ClassicalRegister(8,'mask')
+        qreg, creg = QuantumRegister(n,'q'), ClassicalRegister(n,'mask')
         measured = QuantumCircuit(qreg,creg)
-        measured.compose(circuit,qubits=range(8),inplace=True)
-        measured.measure(range(8),range(8))
+        measured.compose(circuit,qubits=range(n),inplace=True)
+        measured.measure(range(n),range(n))
         pm = generate_preset_pass_manager(backend=self.backend,optimization_level=2,
                                           seed_transpiler=self.seed_transpiler)
         isa = pm.run(measured)
@@ -251,11 +258,11 @@ class HardwareRunner:
             except Exception as exc:
                 # Visualization is optional; exact text and QPY remain available.
                 artifacts[name]['diagram_unavailable'] = type(exc).__name__
-        layout = isa.layout.final_index_layout() if isa.layout is not None else list(range(8))
+        layout = isa.layout.final_index_layout() if isa.layout is not None else list(range(n))
         measurement_map = [{'physical_qubit':isa.find_bit(x.qubits[0]).index,
                             'mask_classical_bit':isa.find_bit(x.clbits[0]).index}
                            for x in isa.data if x.operation.name=='measure']
-        if sorted(m['mask_classical_bit'] for m in measurement_map) != list(range(8)):
+        if sorted(m['mask_classical_bit'] for m in measurement_map) != list(range(n)):
             raise AssertionError('Transpiled mask measurement map is not a bijection.')
         # A scheduling estimate is informative; the server max_execution_time is
         # the actual per-job cancellation guard. No custom repetition delay used.
@@ -266,7 +273,7 @@ class HardwareRunner:
         rep_delay=getattr(self.backend,'default_rep_delay',None)
         rep_delay=float(rep_delay) if rep_delay is not None else .00025
         estimate = 2+shots*(rep_delay+(circuit_seconds if circuit_seconds is not None else .0001))
-        metadata={'logical_mask_bits':8,'logical_to_physical_final':layout,'measurement_map':measurement_map,
+        metadata={'logical_mask_bits':n,'logical_to_physical_final':layout,'measurement_map':measurement_map,
             'circuits':artifacts,'shots':shots,'transpiler_seed':self.seed_transpiler,
             'circuit_seconds_estimate':circuit_seconds,'rep_delay_seconds':rep_delay,
             'baseline_usage_estimate_seconds':estimate,
@@ -380,10 +387,11 @@ class HardwareRunner:
                 if state in ('DONE','COMPLETED'):
                     result=job.result()
                     counts={str(k):int(v) for k,v in result[0].data.mask.get_counts().items()}
-                    if sum(counts.values())!=record['shots'] or any(not re.fullmatch('[01]{8}',k) for k in counts):
+                    n=self.settings.get('logical_qubits',8)
+                    if sum(counts.values())!=record['shots'] or any(not re.fullmatch(f'[01]{{{n}}}',k) for k in counts):
                         raise AssertionError('Unexpected mask register width or shot count.')
                     payload={'job_id':job_id,'backend':self.backend.name,'counts':counts,
-                        'logical_mask_bits':8,'bit_order':'Qiskit c7..c0; neuron group i is bit i of int(key,2)',
+                        'logical_mask_bits':n,'bit_order':f'Qiskit c{n-1}..c0; neuron group i is bit i of int(key,2)',
                         'reported_usage_seconds':record.get('reported_usage_seconds'),
                         'wallclock_seconds':record['submission_to_completion_observation_seconds'],
                         'test_mode':self.test_mode}

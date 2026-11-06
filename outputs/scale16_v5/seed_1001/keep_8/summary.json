@@ -1,0 +1,67 @@
+{
+  "seed": 1001,
+  "keep": 8,
+  "candidate_masks": 12870,
+  "chosen_layers": 2,
+  "surrogate_audit": [
+    {
+      "model": "Linear",
+      "alpha": 3.1622776601683795,
+      "r2": 0.6494784136174216,
+      "mae": 0.00430922268578438,
+      "spearman": 0.8073717948717948
+    },
+    {
+      "model": "Quadratic",
+      "alpha": 10.0,
+      "r2": 0.700738986764591,
+      "mae": 0.004080408423370237,
+      "spearman": 0.8531135531135531
+    },
+    {
+      "model": "Ring quadratic",
+      "alpha": 3.1622776601683795,
+      "r2": 0.5874351978261547,
+      "mae": 0.004871173389059976,
+      "spearman": 0.76771978021978
+    }
+  ],
+  "qaoa_traces": [
+    {
+      "layers": 1,
+      "seconds": 0.10446499998215586,
+      "evaluations": 84,
+      "mean_qubo": 0.5231847254550519,
+      "top10_probability": 0.4683028958027846
+    },
+    {
+      "layers": 2,
+      "seconds": 0.8275704000843689,
+      "evaluations": 375,
+      "mean_qubo": 0.5211166593228215,
+      "top10_probability": 0.621219048470045
+    }
+  ],
+  "QAOA_audit_expected_validation_loss": 0.5246373968528721,
+  "QAOA_audit_best32_validation_loss": 0.5221894860335788,
+  "Random_audit_expected_validation_loss": 0.5313255283981562,
+  "Random_audit_best32_validation_loss": 0.5224163575419838,
+  "classical_timings": {
+    "exact_lookup_seconds": 9.800074622035027e-06,
+    "greedy_seconds": 0.005250099929980934,
+    "annealing_seconds": 0.23119810002390295,
+    "exact_score_all_median_seconds": 0.0004687500186264515,
+    "cost_table_scope": "Enumeration and feature construction were earlier; greedy/annealing use cached QUBO scores. Classical exact score-all time includes matrix scoring and argmin."
+  },
+  "label_training_seconds": 147.7946067993762,
+  "regression_seconds": 0.3618409999180585,
+  "dense": {
+    "parameters": 25450,
+    "training_seconds": 0.7067473999923095,
+    "val_accuracy": 0.8259999752044678,
+    "val_loss": 0.528419554233551,
+    "test_accuracy": 0.8274999856948853
+  },
+  "greedy_evaluations": 2624,
+  "annealing_evaluations": 9600
+}

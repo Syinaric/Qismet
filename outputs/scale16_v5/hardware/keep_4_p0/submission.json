@@ -1,0 +1,11 @@
+{
+  "tag": "keep_4_p0",
+  "job_id": "dbmjc2hkbkrc73cpju90",
+  "state": "pending",
+  "submitted_at": "2026-11-06T02:06:01.058482+00:00",
+  "submitted_epoch": 1793930761.0585055,
+  "output_dir": "C:\\Users\\kpush\\Documents\\Codex\\2026-11-04\\i-w\\outputs\\scale16_v5\\hardware\\keep_4_p0",
+  "shots": 4096,
+  "accounted_seconds": 60,
+  "usage_estimate_seconds": 3.033355264
+}

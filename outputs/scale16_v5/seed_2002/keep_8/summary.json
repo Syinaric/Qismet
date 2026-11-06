@@ -1,0 +1,67 @@
+{
+  "seed": 2002,
+  "keep": 8,
+  "candidate_masks": 12870,
+  "chosen_layers": 2,
+  "surrogate_audit": [
+    {
+      "model": "Linear",
+      "alpha": 3.1622776601683795,
+      "r2": 0.4974372622616883,
+      "mae": 0.0055744444023289545,
+      "spearman": 0.6856684981684981
+    },
+    {
+      "model": "Quadratic",
+      "alpha": 31.622776601683793,
+      "r2": 0.48940892069129605,
+      "mae": 0.005622124866690212,
+      "spearman": 0.6832417582417581
+    },
+    {
+      "model": "Ring quadratic",
+      "alpha": 3.1622776601683795,
+      "r2": 0.5029288349960164,
+      "mae": 0.00565612388027454,
+      "spearman": 0.6983516483516482
+    }
+  ],
+  "qaoa_traces": [
+    {
+      "layers": 1,
+      "seconds": 0.13488419994246215,
+      "evaluations": 111,
+      "mean_qubo": 0.5227201026069874,
+      "top10_probability": 0.4589169275957499
+    },
+    {
+      "layers": 2,
+      "seconds": 0.7852070999797434,
+      "evaluations": 355,
+      "mean_qubo": 0.519725343104575,
+      "top10_probability": 0.6688627954366171
+    }
+  ],
+  "QAOA_audit_expected_validation_loss": 0.5264564763979956,
+  "QAOA_audit_best32_validation_loss": 0.5160440194616626,
+  "Random_audit_expected_validation_loss": 0.5321918176487088,
+  "Random_audit_best32_validation_loss": 0.5134216065776933,
+  "classical_timings": {
+    "exact_lookup_seconds": 9.09995287656784e-06,
+    "greedy_seconds": 0.005005200044251978,
+    "annealing_seconds": 0.23726670001633465,
+    "exact_score_all_median_seconds": 0.0005682999617420137,
+    "cost_table_scope": "Enumeration and feature construction were earlier; greedy/annealing use cached QUBO scores. Classical exact score-all time includes matrix scoring and argmin."
+  },
+  "label_training_seconds": 140.41150059958454,
+  "regression_seconds": 0.34907770005520433,
+  "dense": {
+    "parameters": 25450,
+    "training_seconds": 0.6356903999112546,
+    "val_accuracy": 0.8370000123977661,
+    "val_loss": 0.5045895576477051,
+    "test_accuracy": 0.8352000117301941
+  },
+  "greedy_evaluations": 2304,
+  "annealing_evaluations": 9600
+}

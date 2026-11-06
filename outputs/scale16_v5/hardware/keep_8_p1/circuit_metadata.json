@@ -1,0 +1,124 @@
+{
+  "logical_mask_bits": 16,
+  "logical_to_physical_final": [
+    106,
+    78,
+    89,
+    90,
+    91,
+    98,
+    111,
+    110,
+    109,
+    108,
+    97,
+    107,
+    117,
+    125,
+    124,
+    105
+  ],
+  "measurement_map": [
+    {
+      "physical_qubit": 106,
+      "mask_classical_bit": 0
+    },
+    {
+      "physical_qubit": 78,
+      "mask_classical_bit": 1
+    },
+    {
+      "physical_qubit": 89,
+      "mask_classical_bit": 2
+    },
+    {
+      "physical_qubit": 90,
+      "mask_classical_bit": 3
+    },
+    {
+      "physical_qubit": 91,
+      "mask_classical_bit": 4
+    },
+    {
+      "physical_qubit": 98,
+      "mask_classical_bit": 5
+    },
+    {
+      "physical_qubit": 111,
+      "mask_classical_bit": 6
+    },
+    {
+      "physical_qubit": 110,
+      "mask_classical_bit": 7
+    },
+    {
+      "physical_qubit": 109,
+      "mask_classical_bit": 8
+    },
+    {
+      "physical_qubit": 108,
+      "mask_classical_bit": 9
+    },
+    {
+      "physical_qubit": 97,
+      "mask_classical_bit": 10
+    },
+    {
+      "physical_qubit": 107,
+      "mask_classical_bit": 11
+    },
+    {
+      "physical_qubit": 117,
+      "mask_classical_bit": 12
+    },
+    {
+      "physical_qubit": 125,
+      "mask_classical_bit": 13
+    },
+    {
+      "physical_qubit": 124,
+      "mask_classical_bit": 14
+    },
+    {
+      "physical_qubit": 105,
+      "mask_classical_bit": 15
+    }
+  ],
+  "circuits": {
+    "logical": {
+      "qubits_in_register": 16,
+      "classical_bits": 16,
+      "depth": 37,
+      "two_qubit_gates": 160,
+      "gate_counts": {
+        "rzz": 120,
+        "rz": 16,
+        "rxx": 16,
+        "ryy": 16,
+        "measure": 16,
+        "h": 8,
+        "x": 8,
+        "cx": 8
+      }
+    },
+    "transpiled": {
+      "qubits_in_register": 156,
+      "classical_bits": 16,
+      "depth": 416,
+      "two_qubit_gates": 469,
+      "gate_counts": {
+        "sx": 1053,
+        "rz": 695,
+        "cz": 469,
+        "measure": 16,
+        "x": 4
+      }
+    }
+  },
+  "shots": 4096,
+  "transpiler_seed": 2026,
+  "circuit_seconds_estimate": 1.4544000000000015e-05,
+  "rep_delay_seconds": 0.00025,
+  "baseline_usage_estimate_seconds": 3.083572224,
+  "estimate_warning": "Approximation only; server overhead and runtime behavior can differ. No billing guarantee."
+}

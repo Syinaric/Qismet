@@ -1,0 +1,67 @@
+{
+  "seed": 1001,
+  "keep": 4,
+  "candidate_masks": 1820,
+  "chosen_layers": 2,
+  "surrogate_audit": [
+    {
+      "model": "Linear",
+      "alpha": 1.0,
+      "r2": 0.6763883336441592,
+      "mae": 0.023112530670204728,
+      "spearman": 0.8891941391941393
+    },
+    {
+      "model": "Quadratic",
+      "alpha": 3.1622776601683795,
+      "r2": 0.7857771983254846,
+      "mae": 0.017803515836230046,
+      "spearman": 0.9032051282051281
+    },
+    {
+      "model": "Ring quadratic",
+      "alpha": 1.0,
+      "r2": 0.668427853236168,
+      "mae": 0.023786953636543283,
+      "spearman": 0.882051282051282
+    }
+  ],
+  "qaoa_traces": [
+    {
+      "layers": 1,
+      "seconds": 0.047723200055770576,
+      "evaluations": 135,
+      "mean_qubo": 0.5737648919432502,
+      "top10_probability": 0.3815750424289218
+    },
+    {
+      "layers": 2,
+      "seconds": 0.17489069991279393,
+      "evaluations": 315,
+      "mean_qubo": 0.5679953620974851,
+      "top10_probability": 0.4672689420244929
+    }
+  ],
+  "QAOA_audit_expected_validation_loss": 0.5595033050246402,
+  "QAOA_audit_best32_validation_loss": 0.5479256357097714,
+  "Random_audit_expected_validation_loss": 0.6088754329830409,
+  "Random_audit_best32_validation_loss": 0.5563911123775931,
+  "classical_timings": {
+    "exact_lookup_seconds": 3.00002284348011e-06,
+    "greedy_seconds": 0.0014956999802961946,
+    "annealing_seconds": 0.23265749996062368,
+    "exact_score_all_median_seconds": 6.935000419616699e-05,
+    "cost_table_scope": "Enumeration and feature construction were earlier; greedy/annealing use cached QUBO scores. Classical exact score-all time includes matrix scoring and argmin."
+  },
+  "label_training_seconds": 141.48668740107678,
+  "regression_seconds": 0.32768680003937334,
+  "dense": {
+    "parameters": 25450,
+    "training_seconds": 0.7067473999923095,
+    "val_accuracy": 0.8259999752044678,
+    "val_loss": 0.528419554233551,
+    "test_accuracy": 0.8274999856948853
+  },
+  "greedy_evaluations": 1440,
+  "annealing_evaluations": 9600
+}
