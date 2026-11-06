@@ -1,4 +1,10 @@
-﻿__pycache__/
+# Local IBM credentials (never commit).
+/outputs/hardware_v3/ibm_credentials.local.json
+
+# Local environments, caches, and publishing checkout.
+__pycache__/
 *.py[cod]
 .venv/
+venv/
 data_cache/
+.publish-qismet/

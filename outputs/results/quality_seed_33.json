@@ -1,0 +1,28 @@
+{
+  "all_audit": {
+    "mae": 0.025697069082501262,
+    "r2": 0.322670387543043,
+    "spearman": 0.6178897090751194,
+    "n_masks": 48
+  },
+  "feasible_audit": {
+    "mae": 0.02867497093280005,
+    "r2": -0.12236449828281959,
+    "spearman": 0.46778711484593843,
+    "n_masks": 35
+  },
+  "ridge_alpha": 0.0001,
+  "fit_retrains": 128,
+  "audit_retrains": 48,
+  "label_seconds": 28.62799329997506,
+  "seed": 33,
+  "keep": 4,
+  "actual_pruning_percentage": 50.0,
+  "qaoa_seconds": 2.003534200019203,
+  "qaoa_feasible_mass": 0.7489304300614124,
+  "qaoa_top_decile_conditional_mass": 0.10098711655936302,
+  "uniform_top_decile_mass": 0.1,
+  "raw_uniform_feasible_candidates": 9,
+  "greedy_evaluations": 32,
+  "total_seconds": 32.149312200024724
+}

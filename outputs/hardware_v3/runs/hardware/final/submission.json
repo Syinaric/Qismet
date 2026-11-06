@@ -1,0 +1,11 @@
+{
+  "tag": "final",
+  "job_id": "dbmidv674qds73dsbdvg",
+  "state": "pending",
+  "submitted_at": "2026-11-06T01:01:47.121763+00:00",
+  "submitted_epoch": 1793926907.1217825,
+  "output_dir": "C:\\Users\\kpush\\Documents\\Codex\\2026-11-04\\i-w\\outputs\\hardware_v3\\runs\\hardware\\final",
+  "shots": 2048,
+  "accounted_seconds": 60,
+  "usage_estimate_seconds": 2.54317056
+}

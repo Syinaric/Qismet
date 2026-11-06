@@ -1,0 +1,35 @@
+{
+  "dataset": "existing Fashion-MNIST split, 5000 train/1000 validation/10000 test",
+  "hidden": 32,
+  "groups": 16,
+  "group_size": 2,
+  "keep_groups": [
+    8,
+    4
+  ],
+  "seeds": [
+    1001,
+    2002,
+    3003
+  ],
+  "epochs": 20,
+  "batch_size": 256,
+  "learning_rate": 0.003,
+  "fit_masks_per_budget": 192,
+  "audit_masks_per_budget": 64,
+  "layers": [
+    1,
+    2
+  ],
+  "optimizer": "BFGS",
+  "restarts": 3,
+  "max_iterations": 100,
+  "final_candidate_budget": 32,
+  "greedy_restarts": 8,
+  "annealing_chains": 32,
+  "annealing_steps": 300,
+  "max_validation_drop_pp": 4,
+  "selection": "QUBO score only, masks and depth frozen before test evaluation",
+  "hardware_gate": "positive audit R2, lower predicted best32 cost than uniform; inspect transpilation before submitting",
+  "scope": "Exploratory scaling study. No guaranteed quantum advantage."
+}

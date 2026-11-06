@@ -1,0 +1,13 @@
+{
+  "execution": "local_verification_only_no_hardware_jobs",
+  "saved_probability_max_absolute_error": 3.2959746043559335e-17,
+  "fashion_max_basis_encoding_error": 1.4210854715202004e-14,
+  "saved_finite_shot_counts_identical": true,
+  "saved_selected_mask_identical": true,
+  "parameter_and_register_mapping": true,
+  "toy_cost_unitary_error": 2.8177377798042847e-16,
+  "toy_full_layer_state_error": 1.6883057536160646e-16,
+  "count_statistics_bit_order_and_no_feasible_behavior": true,
+  "hardware_path_no_enumeration_32_qubit_smoke": true,
+  "all_checks_passed": true
+}

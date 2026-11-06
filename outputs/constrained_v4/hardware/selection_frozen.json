@@ -1,0 +1,11 @@
+{
+  "chosen_layers": 2,
+  "depth_selection_criterion": "lowest conditional mean QUBO score among all three hardware depths",
+  "selected_state": 60,
+  "random_best32_state": 46,
+  "exact_qubo_state": 60,
+  "selection_frozen_before_test": true,
+  "raw_candidate_budget": 32,
+  "candidate_seed": 20261106,
+  "note": "Exploratory hardware depth selection by QUBO only. All depths and control reported."
+}

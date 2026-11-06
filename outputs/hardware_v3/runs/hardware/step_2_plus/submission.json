@@ -1,0 +1,11 @@
+{
+  "tag": "step_2_plus",
+  "job_id": "dbmiakd8mdtc73d80o4g",
+  "state": "pending",
+  "submitted_at": "2026-11-06T00:54:39.985836+00:00",
+  "submitted_epoch": 1793926479.9858565,
+  "output_dir": "C:\\Users\\kpush\\Documents\\Codex\\2026-11-04\\i-w\\outputs\\hardware_v3\\runs\\hardware\\step_2_plus",
+  "shots": 1024,
+  "accounted_seconds": 60,
+  "usage_estimate_seconds": 2.271552512
+}

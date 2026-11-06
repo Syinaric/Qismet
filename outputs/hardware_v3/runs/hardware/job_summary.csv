@@ -1,0 +1,9 @@
+tag,job_id,status,shots,qpu_seconds
+replay,dbmi7bhkbkrc73cphr00,DONE,1024,2.0
+step_1_plus,dbmi7q58mdtc73d80j30,DONE,1024,2.0
+step_1_minus,dbmi8g674qds73dsb49g,DONE,1024,2.0
+step_2_plus,dbmiakd8mdtc73d80o4g,DONE,1024,2.0
+step_2_minus,dbmib3e74qds73dsb8gg,DONE,1024,2.0
+step_3_plus,dbmibid8ft8s738utc60,DONE,1024,2.0
+step_3_minus,dbmic1674qds73dsba40,DONE,1024,2.0
+final,dbmidv674qds73dsbdvg,DONE,2048,3.0

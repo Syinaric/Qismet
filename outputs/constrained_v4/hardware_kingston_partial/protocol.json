@@ -1,0 +1,18 @@
+{
+  "seed": 11,
+  "layers": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "shots_per_circuit": 4096,
+  "prior_qpu_seconds": 17.0,
+  "additional_allowance_seconds": 583.0,
+  "reserve_seconds": 120,
+  "max_jobs": 4,
+  "max_job_seconds": 60,
+  "selection_shots": 32,
+  "selection_seed": 20261106,
+  "description": "Exploratory comparison; CPU-optimized angles evaluated on real hardware. Initial-state control plus three depths. No test-based selection."
+}

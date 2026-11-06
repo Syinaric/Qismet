@@ -1,0 +1,11 @@
+{
+  "tag": "constrained_p0",
+  "job_id": "dbmj0ld8mdtc73d81tp0",
+  "state": "pending",
+  "submitted_at": "2026-11-06T01:41:40.190581+00:00",
+  "submitted_epoch": 1793929300.190606,
+  "output_dir": "C:\\Users\\kpush\\Documents\\Codex\\2026-11-04\\i-w\\outputs\\constrained_v4\\hardware\\constrained_p0",
+  "shots": 4096,
+  "accounted_seconds": 60,
+  "usage_estimate_seconds": 3.031274496
+}

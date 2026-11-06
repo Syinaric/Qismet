@@ -1,0 +1,11 @@
+{
+  "tag": "replay",
+  "job_id": "dbmi7bhkbkrc73cphr00",
+  "state": "pending",
+  "submitted_at": "2026-11-06T00:47:40.860451+00:00",
+  "submitted_epoch": 1793926060.860481,
+  "output_dir": "C:\\Users\\kpush\\Documents\\Codex\\2026-11-04\\i-w\\outputs\\hardware_v3\\runs\\hardware\\replay",
+  "shots": 1024,
+  "accounted_seconds": 60,
+  "usage_estimate_seconds": 2.27158528
+}

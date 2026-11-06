@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "created": "2026-11-06T01:25:05.689326+00:00",
+  "backend": "ibm_kingston",
+  "instance": "crn:v1:bluemix:public:quantum-computing:us-east:a/e1e288f417814e0f8234514626e22f89:39144bd7-c9fe-4685-b840-544bc39a91f4::",
+  "test_mode": false,
+  "settings": {
+    "allowance_seconds": 583.0,
+    "reserve_seconds": 120.0,
+    "max_job_seconds": 60,
+    "max_jobs": 4,
+    "max_shots": 4096
+  },
+  "jobs": [
+    {
+      "tag": "constrained_p0",
+      "job_id": "dbmiot674qds73dsbtm0",
+      "state": "complete",
+      "submitted_at": "2026-11-06T01:25:07.194747+00:00",
+      "submitted_epoch": 1793928307.1947684,
+      "output_dir": "C:\\Users\\kpush\\Documents\\Codex\\2026-11-04\\i-w\\outputs\\constrained_v4\\hardware\\constrained_p0",
+      "shots": 4096,
+      "accounted_seconds": 3.0,
+      "usage_estimate_seconds": 3.033469952,
+      "remote_status": "DONE",
+      "last_collected_at": "2026-11-06T01:40:11.403002+00:00",
+      "submission_to_last_observation_seconds": 904.2082607746124,
+      "finished_observed_epoch": 1793928442.0921652,
+      "submission_to_completion_observation_seconds": 134.89739680290222,
+      "reported_usage_seconds": 3.0,
+      "usage_reservation_retained": false,
+      "result_file": "C:\\Users\\kpush\\Documents\\Codex\\2026-11-04\\i-w\\outputs\\constrained_v4\\hardware\\constrained_p0\\result.json"
+    },
+    {
+      "tag": "constrained_p1",
+      "job_id": "dbmiq0674qds73dsbvd0",
+      "state": "failed",
+      "submitted_at": "2026-11-06T01:27:27.610688+00:00",
+      "submitted_epoch": 1793928447.6107092,
+      "output_dir": "C:\\Users\\kpush\\Documents\\Codex\\2026-11-04\\i-w\\outputs\\constrained_v4\\hardware\\constrained_p1",
+      "shots": 4096,
+      "accounted_seconds": 60,
+      "usage_estimate_seconds": 3.070809088,
+      "remote_status": "CANCELLED",
+      "last_collected_at": "2026-11-06T01:40:44.752567+00:00",
+      "submission_to_last_observation_seconds": 797.1418986320496,
+      "finished_observed_epoch": 1793929244.7526073,
+      "submission_to_completion_observation_seconds": 797.1418981552124,
+      "usage_reservation_retained": true
+    }
+  ]
+}

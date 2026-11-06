@@ -1,0 +1,22 @@
+{
+  "seeds": [
+    101,
+    202,
+    303,
+    404,
+    505
+  ],
+  "hidden": 16,
+  "keep_groups": 4,
+  "fit_masks": 35,
+  "audit_masks": 35,
+  "layers": 3,
+  "restarts": 3,
+  "bfgs_maxiter": 150,
+  "baseline": "uniform over the same 70 masks",
+  "endpoints": [
+    "expected single-proposal test accuracy",
+    "expected best-of-32 test accuracy"
+  ],
+  "note": "Exploratory follow-up. No quantum speed advantage claim. Final test metrics do not tune any choice."
+}

@@ -1,0 +1,37 @@
+{
+  "bootstrap_samples": 2000,
+  "depth_selection_frequencies": {
+    "1": 0.002,
+    "2": 0.998,
+    "3": 0.0
+  },
+  "selected_single_accuracy_gain_pp_interval_95": [
+    0.3910401078076556,
+    0.4734637988091577
+  ],
+  "selected_best32_accuracy_gain_pp_interval_95": [
+    0.13954896198543093,
+    0.20182602340430786
+  ],
+  "per_depth": {
+    "1": {
+      "best32_accuracy_gain_pp_interval_95": [
+        0.14559208855906614,
+        0.20443424967545307
+      ]
+    },
+    "2": {
+      "best32_accuracy_gain_pp_interval_95": [
+        0.13954896198543093,
+        0.20182602340430786
+      ]
+    },
+    "3": {
+      "best32_accuracy_gain_pp_interval_95": [
+        -0.0778939342115012,
+        0.008140860365658807
+      ]
+    }
+  },
+  "scope": "Multinomial resampling of this one batch per circuit, including QUBO-based depth reselection. No hardware drift or dataset uncertainty."
+}

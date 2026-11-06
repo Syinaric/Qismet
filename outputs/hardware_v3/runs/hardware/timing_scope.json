@@ -1,0 +1,9 @@
+{
+  "classical_exact_seconds": 0.0021466000471264124,
+  "classical_best32_seconds": 0.0009632000001147389,
+  "prior_full_seed_experiment_seconds": 97.27921830001287,
+  "prior_experiment_includes": "128fit+49audit mask retrains, regression CV, two QAOA solves, final comparisons",
+  "prior_warmstart_solver_seconds": 2.0689506999915466,
+  "end_to_end_speedup_established": false,
+  "limitation": "Historic label-generation stages were not separately timed; do not claim exact end-to-end comparison. Hardware job timings reside in its ledger. Inference speed is distinct from pruning-search speed."
+}

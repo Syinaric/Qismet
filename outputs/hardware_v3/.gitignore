@@ -1,0 +1,2 @@
+# Keep credentials ignored if this folder is copied into another repository.
+ibm_credentials.local.json

@@ -1,0 +1,79 @@
+{
+  "logical_mask_bits": 8,
+  "logical_to_physical_final": [
+    3,
+    2,
+    16,
+    23,
+    15,
+    19,
+    109,
+    118
+  ],
+  "measurement_map": [
+    {
+      "physical_qubit": 3,
+      "mask_classical_bit": 0
+    },
+    {
+      "physical_qubit": 2,
+      "mask_classical_bit": 1
+    },
+    {
+      "physical_qubit": 16,
+      "mask_classical_bit": 2
+    },
+    {
+      "physical_qubit": 23,
+      "mask_classical_bit": 3
+    },
+    {
+      "physical_qubit": 15,
+      "mask_classical_bit": 4
+    },
+    {
+      "physical_qubit": 19,
+      "mask_classical_bit": 5
+    },
+    {
+      "physical_qubit": 109,
+      "mask_classical_bit": 6
+    },
+    {
+      "physical_qubit": 118,
+      "mask_classical_bit": 7
+    }
+  ],
+  "circuits": {
+    "logical": {
+      "qubits_in_register": 8,
+      "classical_bits": 8,
+      "depth": 3,
+      "two_qubit_gates": 4,
+      "gate_counts": {
+        "measure": 8,
+        "h": 4,
+        "x": 4,
+        "cx": 4
+      }
+    },
+    "transpiled": {
+      "qubits_in_register": 156,
+      "classical_bits": 8,
+      "depth": 7,
+      "two_qubit_gates": 4,
+      "gate_counts": {
+        "rz": 16,
+        "sx": 12,
+        "measure": 8,
+        "cz": 4
+      }
+    }
+  },
+  "shots": 4096,
+  "transpiler_seed": 2026,
+  "circuit_seconds_estimate": 2.312e-06,
+  "rep_delay_seconds": 0.00025,
+  "baseline_usage_estimate_seconds": 3.033469952,
+  "estimate_warning": "Approximation only; server overhead and runtime behavior can differ. No billing guarantee."
+}

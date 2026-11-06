@@ -1,0 +1,25 @@
+{
+  "backend": "ibm_kingston",
+  "jobs": 8,
+  "shots": 9216,
+  "qpu_seconds": 17.0,
+  "first_submission_to_last_completion_observation_seconds": 900.597954750061,
+  "final_feasible_fraction": 0.49658203125,
+  "ideal_final_feasible_probability": 0.6817973624289917,
+  "final_distribution_total_variation_from_ideal": 0.24075585311451742,
+  "selected_mask": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1
+  ],
+  "selected_qubo_cost": 0.5280593285129696,
+  "exact_feasible_qubo_cost": 0.5109736899665595,
+  "selected_qubo_gap": 0.017085638546410098,
+  "quantum_advantage_established": false,
+  "scope": "One initialization, simulator warm start and three hardware SPSA steps. Finite-shot TVD combines sampling error with device/transpilation differences."
+}

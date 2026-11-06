@@ -1,0 +1,22 @@
+{
+  "chosen_layers": 2,
+  "depth_selection_criterion": "lowest conditional mean QUBO score among all three hardware depths",
+  "selected_state": 60,
+  "random_best32_state": 46,
+  "exact_qubo_state": 60,
+  "selection_frozen_before_test": true,
+  "raw_candidate_budget": 32,
+  "candidate_seed": 20261106,
+  "note": "Exploratory hardware depth selection by QUBO only. All depths and control reported.",
+  "uniform_expected_test_accuracy": 0.8016171446868352,
+  "uniform_best32_expected_test_accuracy": 0.8147823735809047,
+  "uniform_expected_validation_loss": 0.573611342055457,
+  "uniform_best32_expected_validation_loss": 0.5446931125754152,
+  "selected_test_accuracy": 0.8180999755859375,
+  "random_selected_test_accuracy": 0.8129000067710876,
+  "additional_qpu_seconds": 12.0,
+  "total_project_qpu_seconds": 32.0,
+  "earlier_cancelled_job_reservation_seconds": 60.0,
+  "backend": "ibm_fez",
+  "quantum_speedup_demonstrated": false
+}

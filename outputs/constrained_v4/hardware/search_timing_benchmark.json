@@ -1,0 +1,21 @@
+{
+  "exact_70_feasible_masks": {
+    "median_ms": 0.1898,
+    "p10_ms": 0.1878,
+    "p90_ms": 0.20281,
+    "repetitions": 200
+  },
+  "best_of_32_random_feasible_masks": {
+    "median_ms": 0.0344,
+    "p10_ms": 0.0341,
+    "p90_ms": 0.0353,
+    "repetitions": 200
+  },
+  "same_qubo_exact_state": 60,
+  "same_qubo_exact_cost": 0.5335104523290143,
+  "selected_hardware_job_qpu_seconds": 3.0,
+  "all_four_followup_jobs_qpu_seconds": 12.0,
+  "followup_submission_to_last_completion_observation_seconds": 143.2335307598114,
+  "python": "3.13.7",
+  "scope": "CPU search includes valid-mask generation, score evaluation and selection. Both methods reuse the same fitted QUBO. Hardware QPU usage is a different clock from CPU elapsed time; no controlled scaling or end-to-end quantum advantage is claimed. Quantum simulator angle optimization and all shared label generation are excluded from this search-only comparison."
+}

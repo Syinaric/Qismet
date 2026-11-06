@@ -1,0 +1,11 @@
+{
+  "tag": "step_1_minus",
+  "job_id": "dbmi8g674qds73dsb49g",
+  "state": "pending",
+  "submitted_at": "2026-11-06T00:50:07.915385+00:00",
+  "submitted_epoch": 1793926207.9154093,
+  "output_dir": "C:\\Users\\kpush\\Documents\\Codex\\2026-11-04\\i-w\\outputs\\hardware_v3\\runs\\hardware\\step_1_minus",
+  "shots": 1024,
+  "accounted_seconds": 60,
+  "usage_estimate_seconds": 2.271552512
+}
