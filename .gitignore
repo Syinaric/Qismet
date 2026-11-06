@@ -8,3 +8,6 @@ __pycache__/
 venv/
 data_cache/
 .publish-qismet/
+
+# macOS
+.DS_Store

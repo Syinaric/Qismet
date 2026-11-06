@@ -1,0 +1,12 @@
+{
+  "seed": 1001,
+  "keep": 8,
+  "masks": 12870,
+  "workers": 6,
+  "wall_seconds_this_run": 1156.8220102920022,
+  "retrained_this_run": 12870,
+  "total_training_cpu_seconds": 6892.297057482589,
+  "best_state": 23370,
+  "best_val_loss": 0.5064852833747864,
+  "best_val_accuracy": 0.8240000009536743
+}

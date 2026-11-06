@@ -1,0 +1,382 @@
+{
+ "classes": [
+  "T-shirt/top",
+  "Trouser",
+  "Pullover",
+  "Dress",
+  "Coat",
+  "Sandal",
+  "Shirt",
+  "Sneaker",
+  "Bag",
+  "Ankle boot"
+ ],
+ "dense_test_accuracy": 0.8233,
+ "dense_val_curve": [
+  0.6329999923706054,
+  0.6978000044822693,
+  0.7348000049591065,
+  0.7583999872207642,
+  0.7683999896049499,
+  0.7838000059127808,
+  0.7955999970436096,
+  0.8026000022888183,
+  0.8074000000953674,
+  0.8122000098228455,
+  0.8065999865531921,
+  0.8143999934196472,
+  0.8193999886512756,
+  0.8218000173568726,
+  0.822599995136261,
+  0.8196000099182129,
+  0.8245999932289123,
+  0.8251999974250793,
+  0.8279999971389771,
+  0.8210000038146973
+ ],
+ "init_val_accuracy": 0.1,
+ "results": {
+  "50.0|Best of 32 random": 81.11,
+  "50.0|Dense": 82.18,
+  "50.0|Exact QUBO": 80.98,
+  "50.0|Exact linear": 80.73,
+  "50.0|Magnitude": 80.65,
+  "50.0|QAOA": 80.41,
+  "50.0|Random (10-mask mean)": 80.28,
+  "75.0|Best of 32 random": 76.53,
+  "75.0|Dense": 82.18,
+  "75.0|Exact QUBO": 76.28,
+  "75.0|Exact linear": 76.25,
+  "75.0|Magnitude": 75.59,
+  "75.0|QAOA": 76.43,
+  "75.0|Random (10-mask mean)": 71.34
+ },
+ "results_sd": {
+  "50.0|Best of 32 random": 0.49,
+  "50.0|Dense": 0.47,
+  "50.0|Exact QUBO": 0.66,
+  "50.0|Exact linear": 0.47,
+  "50.0|Magnitude": 0.63,
+  "50.0|QAOA": 0.55,
+  "50.0|Random (10-mask mean)": 0.73,
+  "75.0|Best of 32 random": 0.46,
+  "75.0|Dense": 0.47,
+  "75.0|Exact QUBO": 0.5,
+  "75.0|Exact linear": 0.83,
+  "75.0|Magnitude": 1.55,
+  "75.0|QAOA": 0.9,
+  "75.0|Random (10-mask mean)": 1.62
+ },
+ "lottery_one_shot": [
+  {
+   "key": 0.0,
+   "variant": "random mask",
+   "sparsity": 0.0,
+   "mean": 82.17600107192993,
+   "sd": 0.4230646477706609
+  },
+  {
+   "key": 0.0,
+   "variant": "random reinit",
+   "sparsity": 0.0,
+   "mean": 82.3420000076294,
+   "sd": 0.4524331509288819
+  },
+  {
+   "key": 0.0,
+   "variant": "winning ticket",
+   "sparsity": 0.0,
+   "mean": 82.17600107192993,
+   "sd": 0.4230646477706609
+  },
+  {
+   "key": 0.5,
+   "variant": "random mask",
+   "sparsity": 0.5,
+   "mean": 81.4079999923706,
+   "sd": 0.41575979693723947
+  },
+  {
+   "key": 0.5,
+   "variant": "random reinit",
+   "sparsity": 0.5,
+   "mean": 81.3700008392334,
+   "sd": 0.5681547694709962
+  },
+  {
+   "key": 0.5,
+   "variant": "winning ticket",
+   "sparsity": 0.5,
+   "mean": 82.1399998664856,
+   "sd": 0.46143239297695626
+  },
+  {
+   "key": 0.8,
+   "variant": "random mask",
+   "sparsity": 0.8,
+   "mean": 76.82600021362305,
+   "sd": 1.382599203823567
+  },
+  {
+   "key": 0.8,
+   "variant": "random reinit",
+   "sparsity": 0.8,
+   "mean": 77.81399965286255,
+   "sd": 0.44616649684082693
+  },
+  {
+   "key": 0.8,
+   "variant": "winning ticket",
+   "sparsity": 0.8,
+   "mean": 79.47400093078613,
+   "sd": 1.1903039023189033
+  },
+  {
+   "key": 0.9,
+   "variant": "random mask",
+   "sparsity": 0.9,
+   "mean": 66.3099992275238,
+   "sd": 5.112812179245653
+  },
+  {
+   "key": 0.9,
+   "variant": "random reinit",
+   "sparsity": 0.9,
+   "mean": 59.13400173187255,
+   "sd": 1.809194801335185
+  },
+  {
+   "key": 0.9,
+   "variant": "winning ticket",
+   "sparsity": 0.9,
+   "mean": 63.54000091552734,
+   "sd": 5.348046740670211
+  },
+  {
+   "key": 0.95,
+   "variant": "random mask",
+   "sparsity": 0.95,
+   "mean": 34.30400013923645,
+   "sd": 3.664219885881634
+  },
+  {
+   "key": 0.95,
+   "variant": "random reinit",
+   "sparsity": 0.95,
+   "mean": 39.17999982833862,
+   "sd": 2.217603127069722
+  },
+  {
+   "key": 0.95,
+   "variant": "winning ticket",
+   "sparsity": 0.95,
+   "mean": 36.432000398635864,
+   "sd": 7.391609747667421
+  },
+  {
+   "key": 0.98,
+   "variant": "random mask",
+   "sparsity": 0.9800000000000001,
+   "mean": 22.128000259399414,
+   "sd": 3.8785632885961276
+  },
+  {
+   "key": 0.98,
+   "variant": "random reinit",
+   "sparsity": 0.9800000000000001,
+   "mean": 23.991999328136444,
+   "sd": 2.3274998874119395
+  },
+  {
+   "key": 0.98,
+   "variant": "winning ticket",
+   "sparsity": 0.9800000000000001,
+   "mean": 24.475999772548676,
+   "sd": 2.334485552237161
+  }
+ ],
+ "lottery_iterative": [
+  {
+   "key": 0,
+   "variant": "random reinit",
+   "sparsity": 0.0,
+   "mean": 82.3420000076294,
+   "sd": 0.4524331509288819
+  },
+  {
+   "key": 0,
+   "variant": "winning ticket",
+   "sparsity": 0.0,
+   "mean": 82.17600107192993,
+   "sd": 0.4230646477706609
+  },
+  {
+   "key": 1,
+   "variant": "random reinit",
+   "sparsity": 0.19875629722921917,
+   "mean": 81.68599963188171,
+   "sd": 0.24096511610741914
+  },
+  {
+   "key": 1,
+   "variant": "winning ticket",
+   "sparsity": 0.19875629722921917,
+   "mean": 82.15200185775757,
+   "sd": 0.555532150135468
+  },
+  {
+   "key": 2,
+   "variant": "random reinit",
+   "sparsity": 0.35784005037783373,
+   "mean": 81.37199878692627,
+   "sd": 0.31801772081696356
+  },
+  {
+   "key": 2,
+   "variant": "winning ticket",
+   "sparsity": 0.35784005037783373,
+   "mean": 82.04599857330322,
+   "sd": 0.4045046897316637
+  },
+  {
+   "key": 3,
+   "variant": "random reinit",
+   "sparsity": 0.48528022670025184,
+   "mean": 81.43999934196472,
+   "sd": 0.47201806957968906
+  },
+  {
+   "key": 3,
+   "variant": "winning ticket",
+   "sparsity": 0.48528022670025184,
+   "mean": 82.00599908828735,
+   "sd": 0.4061331187701498
+  },
+  {
+   "key": 4,
+   "variant": "random reinit",
+   "sparsity": 0.5872953400503778,
+   "mean": 80.95199942588806,
+   "sd": 0.34102240033624126
+  },
+  {
+   "key": 4,
+   "variant": "winning ticket",
+   "sparsity": 0.5872953400503778,
+   "mean": 82.12000012397766,
+   "sd": 0.40629973347839143
+  },
+  {
+   "key": 5,
+   "variant": "random reinit",
+   "sparsity": 0.6690018891687657,
+   "mean": 80.9279990196228,
+   "sd": 0.571258790318828
+  },
+  {
+   "key": 5,
+   "variant": "winning ticket",
+   "sparsity": 0.6690018891687657,
+   "mean": 82.2380006313324,
+   "sd": 0.37236383336344836
+  },
+  {
+   "key": 6,
+   "variant": "random reinit",
+   "sparsity": 0.7344930730478589,
+   "mean": 80.82600116729736,
+   "sd": 0.46906801669265447
+  },
+  {
+   "key": 6,
+   "variant": "winning ticket",
+   "sparsity": 0.7344930730478589,
+   "mean": 82.2159993648529,
+   "sd": 0.3508052325147636
+  },
+  {
+   "key": 7,
+   "variant": "random reinit",
+   "sparsity": 0.7869175062972292,
+   "mean": 80.48799872398376,
+   "sd": 0.33866725981673573
+  },
+  {
+   "key": 7,
+   "variant": "winning ticket",
+   "sparsity": 0.7869175062972292,
+   "mean": 82.04599976539612,
+   "sd": 0.3555619777334643
+  },
+  {
+   "key": 8,
+   "variant": "random reinit",
+   "sparsity": 0.8289515113350125,
+   "mean": 80.11000037193298,
+   "sd": 0.5265724672230403
+  },
+  {
+   "key": 8,
+   "variant": "winning ticket",
+   "sparsity": 0.8289515113350125,
+   "mean": 81.8779993057251,
+   "sd": 0.10628237738039804
+  },
+  {
+   "key": 9,
+   "variant": "random reinit",
+   "sparsity": 0.8626416876574308,
+   "mean": 79.44200038909912,
+   "sd": 0.8456342055816359
+  },
+  {
+   "key": 9,
+   "variant": "winning ticket",
+   "sparsity": 0.8626416876574308,
+   "mean": 81.5500009059906,
+   "sd": 0.19339083353995787
+  },
+  {
+   "key": 10,
+   "variant": "random reinit",
+   "sparsity": 0.8896410579345089,
+   "mean": 78.7720000743866,
+   "sd": 0.8583557626728016
+  },
+  {
+   "key": 10,
+   "variant": "winning ticket",
+   "sparsity": 0.8896410579345089,
+   "mean": 81.24599933624268,
+   "sd": 0.19774793610191888
+  },
+  {
+   "key": 11,
+   "variant": "random reinit",
+   "sparsity": 0.9112877833753149,
+   "mean": 77.81199932098389,
+   "sd": 1.3696647251990464
+  },
+  {
+   "key": 11,
+   "variant": "winning ticket",
+   "sparsity": 0.9112877833753149,
+   "mean": 80.92000007629395,
+   "sd": 0.23605132792994102
+  },
+  {
+   "key": 12,
+   "variant": "random reinit",
+   "sparsity": 0.9286051637279599,
+   "mean": 76.71599984169006,
+   "sd": 1.4660107535697902
+  },
+  {
+   "key": 12,
+   "variant": "winning ticket",
+   "sparsity": 0.9286051637279599,
+   "mean": 80.2840006351471,
+   "sd": 0.5076450816066875
+  }
+ ]
+}

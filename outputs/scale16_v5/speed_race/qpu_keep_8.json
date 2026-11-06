@@ -1,0 +1,47 @@
+{
+  "seed": 1001,
+  "keep": 8,
+  "layers": 2,
+  "shots": 4096,
+  "local_qaoa": {
+    "layers": 2,
+    "seconds": 0.9025968750065658,
+    "theta_matches_saved": true
+  },
+  "backend": "ibm_fez",
+  "compile_seconds": 2.397454709003796,
+  "transpiled_depth": 986,
+  "transpiled_two_qubit_gates": 935,
+  "job_id": "dbmjfpm74qds73dsdehg",
+  "submitted_utc": "2026-11-06T02:13:58.204373+00:00",
+  "submit_to_result_seconds": 15.690915833009058,
+  "ibm_reported_qpu_seconds": 3,
+  "ibm_timestamps": {
+    "created": "2026-11-06T02:13:58.141729Z",
+    "finished": "2026-11-06T02:14:11.725562Z",
+    "running": "2026-11-06T02:13:59.391567Z"
+  },
+  "select_seconds": 0.007443209004122764,
+  "feasible_fraction": 0.205810546875,
+  "feasible_in_first_32": 6,
+  "uniform_feasible_fraction": 0.196380615234375,
+  "qpu_pick_row": 7799,
+  "qpu_pick_state": 57958,
+  "qpu_pick_all_shots_row": 7080,
+  "ibm_usage": {
+    "qpu_charge_time_seconds": 3,
+    "value": 0.04811,
+    "unit": "resource_units",
+    "status": "complete",
+    "details": [
+      {
+        "value": 0.04811,
+        "unit": "resource_units",
+        "metric": {
+          "id": "caffe3ca-729c-5750-8777-df63bbf8bfd9",
+          "value": 3
+        }
+      }
+    ]
+  }
+}

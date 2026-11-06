@@ -1,0 +1,160 @@
+{
+ "job_id": "dbmiv0674qds73dsca4g",
+ "backend": "ibm_fez",
+ "num_qubits": 156,
+ "shots": 4096,
+ "submitted_utc": "2026-11-06 01:38",
+ "transpiled": [
+  {
+   "name": "seed11_keep4",
+   "depth": 361,
+   "two_qubit_gates": 203,
+   "physical_qubits": [
+    123,
+    136,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147
+   ]
+  },
+  {
+   "name": "seed11_keep2",
+   "depth": 357,
+   "two_qubit_gates": 203,
+   "physical_qubits": [
+    123,
+    136,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147
+   ]
+  },
+  {
+   "name": "seed22_keep4",
+   "depth": 361,
+   "two_qubit_gates": 203,
+   "physical_qubits": [
+    123,
+    136,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147
+   ]
+  },
+  {
+   "name": "seed22_keep2",
+   "depth": 356,
+   "two_qubit_gates": 203,
+   "physical_qubits": [
+    123,
+    136,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147
+   ]
+  },
+  {
+   "name": "seed33_keep4",
+   "depth": 361,
+   "two_qubit_gates": 203,
+   "physical_qubits": [
+    123,
+    136,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147
+   ]
+  },
+  {
+   "name": "seed33_keep2",
+   "depth": 354,
+   "two_qubit_gates": 203,
+   "physical_qubits": [
+    123,
+    136,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147
+   ]
+  },
+  {
+   "name": "seed44_keep4",
+   "depth": 354,
+   "two_qubit_gates": 203,
+   "physical_qubits": [
+    123,
+    136,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147
+   ]
+  },
+  {
+   "name": "seed44_keep2",
+   "depth": 362,
+   "two_qubit_gates": 203,
+   "physical_qubits": [
+    123,
+    136,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147
+   ]
+  },
+  {
+   "name": "seed55_keep4",
+   "depth": 361,
+   "two_qubit_gates": 203,
+   "physical_qubits": [
+    123,
+    136,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147
+   ]
+  },
+  {
+   "name": "seed55_keep2",
+   "depth": 361,
+   "two_qubit_gates": 203,
+   "physical_qubits": [
+    123,
+    136,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147
+   ]
+  }
+ ],
+ "quantum_seconds": 13
+}
