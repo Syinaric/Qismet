@@ -1,0 +1,1 @@
+Train CNN ──► Score the 16 filters ──► results/scores.npz ──► [QAOA picks a mask] ──► Evaluate / fine-tune the pruned CNN
