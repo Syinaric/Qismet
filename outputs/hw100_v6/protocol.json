@@ -1,0 +1,47 @@
+{
+  "question": "At an equal candidate budget, do QAOA samples from IBM hardware lead to better retrained pruned networks than classical candidate generators?",
+  "dataset": "fashion_v2 split: 5000 train / 1000 validation / 10000 test",
+  "hidden": 400,
+  "group_size": 2,
+  "groups": 200,
+  "qubits": 100,
+  "encoding": "qubit q keeps group 2q if bit=0 else group 2q+1; all 2^100 bitstrings are valid; 50% of neurons kept",
+  "training": "fashion_v2.train: 20 epochs, Adam lr 0.003, batch 256, paired shuffles; rewind to original init",
+  "seeds": [
+    11,
+    22,
+    33
+  ],
+  "fit_samples": 400,
+  "audit_samples": 100,
+  "qubo": "ridge (RidgeCV alphas logspace(-4,3,15), 5-fold) on 100 linear + chip-edge pairwise features; target = validation loss",
+  "backend": "ibm_fez",
+  "qaoa_layers": 1,
+  "shots": 4096,
+  "angle_tuning": "exact p=1 light-cone expectation; 41x41 grid then Nelder-Mead",
+  "candidate_budget": 4096,
+  "methods": {
+    "QAOA (ibm_fez)": "4096 hardware shots",
+    "Random sampling": "4096 uniform random bitstrings",
+    "Simulated annealing (matched)": "16 chains x 256 single-flip steps = 4096 QUBO evaluations; all visited states are candidates",
+    "Simulated annealing (long)": "64 chains x 20000 steps = 1,280,000 QUBO evaluations (reference ceiling); candidates = states in the final 2000 steps"
+  },
+  "picks_per_method": 10,
+  "pick_rule": "the 10 distinct candidates with the lowest QUBO score",
+  "primary_metric": "best-of-10 validation loss after retraining (lower is better)",
+  "win_rule": "QAOA beats a method if its best-of-10 validation loss is lower in at least 2 of 3 seeds AND its mean best-of-10 validation loss over the 3 seeds is lower",
+  "secondary": [
+    "mean validation loss of the 10 picks",
+    "mean QUBO score of all candidates",
+    "share of candidates better than the best of 4096 random samples",
+    "hardware vs ideal expected QUBO score",
+    "test accuracy of each method's best pick (reported once, never used to choose)"
+  ],
+  "everything_reported": "all seeds, all methods, all jobs, including failures",
+  "known_caveats": [
+    "The native 100-qubit region has 100 couplings (nearly a tree), so the QUBO is easy for classical solvers; the test is about candidate quality at equal budget, not about beating the best classical solver.",
+    "Restricting each qubit to a choice between two fixed groups searches 2^100 of the C(200,100) possible half-size networks.",
+    "p=1 QAOA is the shallowest version; it was chosen so angles can be tuned exactly without simulating 100 qubits.",
+    "Three seeds and one fixed data split: a demonstration-scale test, not a general benchmark."
+  ]
+}
